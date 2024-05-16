@@ -1,0 +1,32 @@
+avltree[record.graduation_count].push_back(record)
+操作:
+	vector<graduation_record>& tmp = avltree.operator[](record.graduation_count); // 此時的tmp變數類型為一個vector<graduation_record>的Reference
+	tmp.push_back(record); //  將record放入tmp
+
+
+avltree.operator[](record.graduation_count) // 此方法直接繼承於binary_tree
+操作:
+	同binary_tree::operator[](record.graduation_count)
+	
+
+binary_tree::operator[](record.graduation_count) // TKey 為 int, TData 為 graduation_record
+操作:
+	bool exists;
+	vector<graduation_record>& output_data = search(record.graduation_count, exists) // search 指的是 TData& binary_tree::search(const TKey& find_key, bool& exists)
+	if(!exists){ //如果 不存在一個節點其儲存的鍵值對(Key-Value Pair)的鍵等於record.graduation_count
+		/* 
+			如果是對類型為avl_tree的物件使用該方法，那麼此時push呼叫的會是binary_treenode<TKey, TData>* avl_tree::push(const TKey& key, const TData& data)
+			而非binary_treenode<TKey, TData>* binary_tree::push(const TKey& key, const TData& data)
+		*/
+		push(record.graduation_count, default_value) 
+		return search(record.graduation_count, exists)
+	}
+	else{
+		return output_data
+	}
+	
+
+avl_tree::push(record.graduation_count, default_value) // TKey 為 int, TData 為 graduation_record
+操作:
+	binary_treenode<TKey, TData>* new_node = binary_tree<TKey, TData>::push(record.graduation_count, default_value); // 呼叫binary_tree的push方法，回傳值為新節點的指標
+	balance_tree(new_node); // 呼叫 avl_tree的balance_tree方法

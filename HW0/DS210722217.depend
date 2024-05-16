@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1677053781 source:c:\users\user\onedrive - 中原大學\桌面\algo\hw0\main.cpp
+	<iostream>
+	<fstream>
+	<string>
+	<cstdlib>
+	<iomanip>
+	<vector>
+	<cstdio>
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
